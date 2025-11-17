@@ -11,12 +11,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-//import java.nio.file.Files;
-//import java.util.List;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -58,7 +59,16 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent p) {
-                System.out.println("parola"); //NOPMD: allowed as this is just an exercises
+                try {
+                    final List<String> lista = Files.readAllLines(new File(PATH).toPath());
+                    for (final String lines: lista) {
+                    System.out.println(lines);  //NOPMD: allowed as this is just an exercises
+                  }
+                } catch (final IOException e) {
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
+
             }
         });
         /*
