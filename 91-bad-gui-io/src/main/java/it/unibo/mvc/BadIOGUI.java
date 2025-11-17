@@ -14,8 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
+//import java.nio.file.Files;
+//import java.util.List;
 import java.util.Random;
 
 /**
@@ -46,6 +46,12 @@ public class BadIOGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        final JPanel pannello = new JPanel();
+        pannello.setLayout(new BoxLayout(pannello, BoxLayout.X_AXIS)); //gli passo dove voglio fare cosa
+        canvas.add(pannello, BorderLayout.CENTER);
+        pannello.add(write, BorderLayout.CENTER);
+
         /*
          * Handlers
          */
@@ -92,6 +98,8 @@ public class BadIOGUI {
          * OK, ready to push the frame onscreen
          */
         frame.setVisible(true);
+
+        frame.pack();
     }
 
     /**
@@ -103,3 +111,4 @@ public class BadIOGUI {
        new BadIOGUI().display();
     }
 }
+
