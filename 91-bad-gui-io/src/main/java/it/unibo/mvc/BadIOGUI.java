@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+//import javax.swing.border.Border;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -43,7 +44,7 @@ public class BadIOGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        //canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -52,6 +53,14 @@ public class BadIOGUI {
         canvas.add(pannello, BorderLayout.CENTER);
         pannello.add(write, BorderLayout.CENTER);
 
+        final JButton read = new JButton("READ");
+        pannello.add(read, BorderLayout.CENTER);
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent p) {
+                System.out.println("parola"); //NOPMD: allowed as this is just an exercises
+            }
+        });
         /*
          * Handlers
          */
